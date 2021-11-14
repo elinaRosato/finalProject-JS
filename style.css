@@ -1,0 +1,262 @@
+/* Mobile First - Media Queries below */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #091353;
+    color: #D5D5D5;
+    font-family: 'DM Sans', sans-serif;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin: 4rem 4rem .3rem 4rem;
+    margin-bottom: .3rem;
+    font-weight: 700;
+}
+
+h2 {
+
+    font-size: 3rem;
+    margin: 0 4rem 0 4rem;
+    font-weight: 700;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Background DIVS */
+.background1 {
+    width: 80vh;
+    height: 80vh;
+    background-color: #b2f9fc80;
+    position: absolute;
+    border-radius: 50%;
+    z-index: -2;
+    top: 50%;
+    right: -45%;
+}
+
+.background2 {
+    width: 70vh;
+    height: 70vh;
+    background-color: #9d84b794;
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    right: -35%;
+    top: -30%;
+}
+
+.background3 {
+    width: 90vh;
+    height: 70vh;
+    background-color: #09135373;
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    left: -65%;
+    top: 15%;
+}
+
+/*************** TODO CONTAINER ***********************/
+.todo-container {
+    background-color: #9D84B7;
+    min-height: 50vh;
+    width: 70%;
+    border-radius: 2rem;
+    margin-top: 2rem;
+}
+
+/* Create a new task */
+.task-container {
+    background-color: #9D84B7;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #091353;
+}
+
+form {
+    width: 100%;
+}
+
+form label{
+    display: block;
+    font-size: 1rem;
+    color: #d5d5d5a8;
+}
+
+form input, form button {
+    display: block;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    background: #D5D5D5;
+    border-radius: 5em;
+    width: 100%;
+    margin-top: .5rem;
+}
+
+form input {
+    outline: #091353;
+}
+
+form input::placeholder {
+    color: #09135393;
+    font-family: 'DM Sans', sans-serif;
+}
+
+form button {
+    color: #D5D5D5;
+    background: #091353;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+}
+
+form button i {
+    margin-right: .75rem;
+}
+
+
+/* TODO list */
+.list-container {
+    background-color: #D5D5D5;
+    border-radius: 2rem;
+    min-height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty {
+    color: #091353;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-list {
+    list-style: none;
+    width: 100%;
+}
+
+.todo {
+    background: #9d84b73f;
+    margin: 0.75em;
+    border-radius: 2rem;
+    color: #091353;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem;
+}
+
+.todo-item {
+    width: 75%;
+    font-size: 1.25rem;
+}
+
+.trash-btn, .complete-btn {
+    border: none;
+    background-color: transparent;
+    margin-left: 1em;
+    cursor: pointer;
+}
+
+.fa-trash, .fa-check {
+    color: #9D84B7;
+    pointer-events: none;
+}
+
+.fa-trash:hover {
+    color: #091353;
+}
+
+.fa-check:hover {
+    color: green;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+/* For lanscape mobile */
+@media only screen and (orientation: landscape) {}
+
+/* For tablet */
+@media only screen and (min-width: 768px) {}
+
+/* For desktop */
+@media only screen and (min-width: 768px) {
+    h1 {
+        font-size: 3rem;
+        margin: 5rem 5rem .3rem 5rem;
+        margin-bottom: .5rem;
+        font-weight: 500;
+    }
+    
+    h2 {
+        font-size: 5rem;
+        margin: 0 5rem 0 5rem;
+    }
+    
+    /* Background DIVS */
+    .background1 {
+        width: 120vh;
+        height: 110vh;
+        left: -20%;
+        top: 40%;
+    }
+    
+    .background2 {
+        width: 130vh;
+        height: 130vh;
+        left: 30%;
+        top: 20%;
+    }
+    
+    .background3 {
+        width: 90vh;
+        height: 120vh;
+        background-color: #0913538a;
+        left:  15%;
+        top: -50%;
+    }
+    
+    /*************** TODO CONTAINER ***********************/
+    .todo-container {
+        min-height: 50vh;
+        width: 50%;
+    }
+    
+    /* Create a new task */
+    .task-container div {
+        width: 80%;
+    }
+
+    /* TODO list */
+    .todo-list {
+        width: 95%;
+    }
+    
+    .todo-item {
+        width: 90%;
+    }
+}
