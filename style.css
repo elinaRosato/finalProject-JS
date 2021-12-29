@@ -96,10 +96,6 @@ form input, form button, .categories {
     margin-top: .5rem;
 }
 
-form input {
-    outline: var(--dark);
-}
-
 form input::placeholder, .categories::content {
     color: var(--light);
     font-family: 'DM Sans', sans-serif;
@@ -212,6 +208,66 @@ form button i {
     border: none;
     border-radius: 10em;
     margin: auto;
+}
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #211d3785;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+}
+
+.modal-container.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.close-event-button {
+text-align: right;
+padding-bottom: 1.75rem;
+}
+
+.modal {
+    background-color: var(--accent);
+    width: 90vw;
+    height: 65vh;
+    border-radius: 2rem;
+    margin: 2rem auto;
+    padding: 1.75rem;
+    color: var(--dark);
+}
+
+.modal h3 {
+    padding-bottom: 1.5rem;
+    font-size: 1.9rem;
+}
+.create-event-button {
+    color: var(--light);
+    background: var(--dark);
+    margin: 2rem auto;
+    width: 50%;
+}
+
+.modal form label{
+    display: block;
+    font-size: 1rem;
+    color: var(--light);
+}
+
+.modal form input, .modal select {
+    display: block;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    background: var(--light);
+    border-radius: 5em;
+    margin: 1rem auto;
+    width: 90%;
 }
 
 .events-list {

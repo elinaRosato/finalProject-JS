@@ -4,16 +4,20 @@ const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
 const empty = document.querySelector('.empty');
+const addEventButton = document.querySelector('#addEventButton');
+const eventModal = document.querySelector('#eventModal');
+const closeEventModal = document.querySelector('#closeEventButton');
+const createEventButton = document.querySelector('#createEventButton');
 
-//const darkModeToggle = $('#darkModeToggle');
 
 //Event Listeners ---------------------------------------------------------------------------
 
-$(document).ready(getLocalTodos); // Este evento hace que si el contenido de la página cargó, entonces ejecuta la funcion getTodos (getTodos crea los elementos de las tareas guardadas en localStorage)
+$(document).ready(getLocalTodos); 
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', checkDelete);
 $("#darkModeToggle").on('click', switchMode);
 selectedCategory = $("#categories option:selected" ).text();
+addEventButton.addEventListener('click', openModal);
 
 //Functions ---------------------------------------------------------------------------------
 
@@ -165,3 +169,10 @@ $(document).ready( function() {
         }
     );
 });
+
+function openModal (e) {
+    eventModal.classList.add("show");
+    $(closeEventModal).click (function(){
+        eventModal.classList.remove('show');
+    });
+}
