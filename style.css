@@ -1,4 +1,14 @@
-/* Mobile First - Media Queries below */
+/* Colors */
+:root {
+    --dark: #211D37;
+    --light: #D5D5D5;
+    --primary: #463765;
+    --secondary: #3A2F58;
+    --accent: #C77AFF;   
+}
+
+/* Mobile First: dark mode default
+        Media Queries and Light mode below */
 *{
     margin: 0;
     padding: 0;
@@ -6,14 +16,20 @@
 }
 
 body {
-    background-color: #091353;
-    color: #D5D5D5;
+    background-color: var(--primary);
+    color: var(--light);
     font-family: 'DM Sans', sans-serif;
+}
+
+.dark-mode-container {
+    display: flex;
+    justify-content: end;
+    margin: 1.5rem 2rem;
 }
 
 h1 {
     font-size: 1.5rem;
-    margin: 4rem 4rem .3rem 4rem;
+    margin: .3rem 4rem;
     margin-bottom: .3rem;
     font-weight: 700;
 }
@@ -31,52 +47,22 @@ main {
     align-items: flex-start;
 }
 
-/* Background DIVS */
-.background1 {
-    width: 80vh;
-    height: 80vh;
-    background-color: #b2f9fc80;
-    position: absolute;
-    border-radius: 50%;
-    z-index: -2;
-    top: 50%;
-    right: -45%;
+.main-contaier {
+    justify-content: center;
+    align-items: flex-start;
 }
-
-.background2 {
-    width: 70vh;
-    height: 70vh;
-    background-color: #9d84b794;
-    position: absolute;
-    border-radius: 50%;
-    z-index: -1;
-    right: -35%;
-    top: -30%;
-}
-
-.background3 {
-    width: 90vh;
-    height: 70vh;
-    background-color: #09135373;
-    position: absolute;
-    border-radius: 50%;
-    z-index: -1;
-    left: -65%;
-    top: 15%;
-}
-
 /*************** TODO CONTAINER ***********************/
+
 .todo-container {
-    background-color: #9D84B7;
+    background-color: var(--secondary);
     min-height: 50vh;
     width: 70%;
     border-radius: 2rem;
-    margin-top: 2rem;
+    margin: 2rem auto;
 }
 
 /* Create a new task */
 .task-container {
-    background-color: #9D84B7;
     border-radius: 2rem;
     display: flex;
     justify-content: center;
@@ -87,7 +73,6 @@ main {
 h3 {
     font-size: 1.3rem;
     font-weight: 700;
-    color: #091353;
 }
 
 form {
@@ -97,32 +82,32 @@ form {
 form label{
     display: block;
     font-size: 1rem;
-    color: #d5d5d5a8;
+    color: var(--light);
 }
 
-form input, form button {
+form input, form button, .categories {
     display: block;
     padding: 0.75rem;
     font-size: 1rem;
     border: none;
-    background: #D5D5D5;
+    background: var(--primary);
     border-radius: 5em;
     width: 100%;
     margin-top: .5rem;
 }
 
 form input {
-    outline: #091353;
+    outline: var(--dark);
 }
 
-form input::placeholder {
-    color: #09135393;
+form input::placeholder, .categories::content {
+    color: var(--light);
     font-family: 'DM Sans', sans-serif;
 }
 
 form button {
-    color: #D5D5D5;
-    background: #091353;
+    color: var(--dark);
+    background: var(--accent);
     font-weight: 500;
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
@@ -135,32 +120,33 @@ form button i {
 
 /* TODO list */
 .list-container {
-    background-color: #D5D5D5;
+    background-color: var(--dark);
     border-radius: 2rem;
-    min-height: 35vh;
+    min-height: 25vh;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .empty {
-    color: #091353;
+    color: var(--light);
     font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20%;
 }
 
 .todo-list {
     list-style: none;
     width: 100%;
+    min-height: 80%;
 }
 
 .todo {
-    background: #9d84b73f;
+    background: var(--secondary);
     margin: 0.75em;
     border-radius: 2rem;
-    color: #091353;
+    color: var(--light);
     font-size: 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -171,6 +157,13 @@ form button i {
 .todo-item {
     width: 75%;
     font-size: 1.25rem;
+}
+
+.todo-category {
+    color: var(--dark);
+    background-color: var(--accent);
+    font-size: 1.25rem;
+    border-radius: 2rem;
 }
 
 .trash-btn, .complete-btn {
@@ -185,17 +178,64 @@ form button i {
     pointer-events: none;
 }
 
-.fa-trash:hover {
-    color: #091353;
-}
-
-.fa-check:hover {
-    color: green;
-}
-
 .completed {
     text-decoration: line-through;
 }
+
+/*************** EVENTS CONTAINER ***********************/
+.events-container {
+    background-color: var(--secondary);
+    width: 70%;
+    border-radius: 2rem;
+    margin: 2rem auto;
+    padding: 1.5rem;
+}
+
+.events-heading {
+    display: flex;
+}
+
+.events-heading h3 {
+    font-size: 1.2em;
+    margin-right: 1rem;
+}
+
+.events-button {
+    color: var(--dark);
+    background: var(--accent);
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    display: block;
+    padding: .2rem .35rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10em;
+    margin: auto;
+}
+
+.events-list {
+padding: 10%;
+list-style: none;
+}
+
+.events-preloader {
+    color: var(--light);
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.event {
+    background: var(--dark);
+    border-radius: 2rem;
+    color: var(--light);
+    padding:  1em;
+    margin-top: 1em;
+}
+
 
 /* For lanscape mobile */
 @media only screen and (orientation: landscape) {}
@@ -215,29 +255,6 @@ form button i {
     h2 {
         font-size: 5rem;
         margin: 0 5rem 0 5rem;
-    }
-    
-    /* Background DIVS */
-    .background1 {
-        width: 120vh;
-        height: 110vh;
-        left: -20%;
-        top: 40%;
-    }
-    
-    .background2 {
-        width: 130vh;
-        height: 130vh;
-        left: 30%;
-        top: 20%;
-    }
-    
-    .background3 {
-        width: 90vh;
-        height: 120vh;
-        background-color: #0913538a;
-        left:  15%;
-        top: -50%;
     }
     
     /*************** TODO CONTAINER ***********************/
@@ -260,3 +277,13 @@ form button i {
         width: 90%;
     }
 }
+
+/* Dark mode toggle */
+.light-mode {
+    --dark: #eeeded;
+    --light: #211D37;
+    --primary: #D5D5D5;
+    --secondary: #c0baba;
+    --accent: #C77AFF;
+}
+
