@@ -4,10 +4,13 @@
     --light: #D5D5D5;
     --primary: #463765;
     --secondary: #3A2F58;
+    --greish: #8c7faf;
     --accent: #C77AFF;   
+    --font-family: 'DM Sans', sans-serif;
+
 }
 
-/* Mobile First: dark mode default
+/* Desktop First: dark mode default
         Media Queries and Light mode below */
 *{
     margin: 0;
@@ -19,44 +22,361 @@ body {
     background-color: var(--primary);
     color: var(--light);
     font-family: 'DM Sans', sans-serif;
+    padding: 7rem 5rem;
+}
+
+.btn {
+    color: var(--dark);
+    background: var(--accent);
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    display: block;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5em;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    margin-bottom: 5rem;
+}
+
+.heading-container{
+    margin-top: 2rem;
+}
+
+h1 {
+    font-size: 4rem;
+    margin: .3rem 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 1rem 1rem 2rem var(--secondary);
+}
+
+h2 {
+    font-size: 6rem;
+    margin: 0 4rem 0 4rem;
+    font-weight: 700;
+    text-shadow: 1rem 1rem 2rem var(--secondary);
+
+}
+
+.bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1.5rem 2rem;
+
 }
 
 .dark-mode-container {
     display: flex;
     justify-content: end;
-    margin: 1.5rem 2rem;
+    font-size: 2rem;
 }
 
-h1 {
-    font-size: 1.5rem;
-    margin: .3rem 4rem;
-    margin-bottom: .3rem;
-    font-weight: 700;
+.create-list-btn {
+    font-weight: 500;
+    font-size: 1.8rem;
+    padding: 1.2rem 2.7rem;
+    box-shadow: 0 0 50px var(--secondary);
 }
-
-h2 {
-
-    font-size: 3rem;
-    margin: 0 4rem 0 4rem;
-    font-weight: 700;
+.create-list-btn i {
+    margin-right: 1rem;
 }
 
 main {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: flex-start;
+    min-height: 60vh;
 }
 
-.main-contaier {
-    justify-content: center;
-    align-items: flex-start;
+/* LISTS CONTAINER ----------------------------------*/ 
+
+.empty {
+    background: radial-gradient( circle, var(--secondary) 0%, var(--primary) 50%);
 }
-/*************** TODO CONTAINER ***********************/
+
+.empty p {
+    color: var(--light);
+    font-weight: 700;
+    font-size: 2rem;
+    margin-top: 15vh;
+    text-align: center;
+}
+
+.empty-img {
+    width: 100%;
+}
+
+/* LIST STYLES */
+
+.list-panel {
+    background-color: var(--dark);
+    border-radius: 2rem;
+    width: 25vw;
+    box-shadow: 0 0 50px var(--secondary);
+}
+
+.list {
+    background-color: var(--secondary);
+    padding: 3rem 3rem 1rem 3rem;
+    border-radius: 2rem;
+}
+
+.list-title-container{
+    display: flex;
+    font-weight: 300;
+}
+
+.list-icon{
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin: auto 0;
+}
+
+.list-title{
+    font-size: 2.5rem;
+    margin: 0 2rem;
+    padding: 0 1rem;
+    flex: 1;
+    border-radius: 5rem;
+}
+
+.editing {
+    background-color: var(--primary);
+    outline-color: var(--accent);
+    outline-width: .2rem;
+    outline-style: solid;
+
+}
+
+.list-bar{
+    display: flex;
+    justify-self: end;
+}
+
+.delete-list-btn, .edit-title-btn{
+    font-size: 1.5rem;
+    margin-left: .5rem;
+    padding: 0.6rem 0.8rem;
+}
+
+.edit-title-btn {
+    background-color: var(--primary);
+}
+
+.edit-title-btn i {
+    color: var(--accent);
+    pointer-events: none;
+}
+
+.delete-list-btn i,  .add-task-btn i{
+    color: var(--dark);
+    pointer-events: none;
+}
+
+.tasks-container {
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.empty-list {
+    padding: 2rem 0 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-text {
+    padding: 2rem;
+    font-size: 1.7rem;
+    font-weight: 500;
+    letter-spacing: .05rem;
+
+}
+
+.list-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+}
+
+.task-count {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    margin: auto;
+    color: var(--greish);
+    font-size: 1.7rem;
+    letter-spacing: .05rem;
+}
+
+.clear-btn{
+    color: var(--greish);
+    font-size: 1.7rem;
+    background-color: transparent;
+    border: none;
+    letter-spacing: .05rem;
+}
+.clear-btn:hover{
+    color: var(--accent);
+}
+
+
+/* Task Creator Panel */
+
+.task-creator {
+    padding: 2rem;
+}
+
+.task-creator form {
+    display: flex;
+}
+
+.task-input{
+    margin-right: 2rem;
+    align-self: center;
+    padding: 1.4rem;
+    font-size: 1.7rem;
+    color: var(--light);
+    border: none;
+    border-radius: 5rem;
+    background-color: var(--primary);
+    width: 100%;
+    font-family: var(--font-family);
+}
+
+.task-input:focus {
+    outline-color: var(--accent);
+    outline-width: .2rem;
+    outline-style: solid;
+}
+
+.task-input::placeholder {
+    color: var(--greish);
+}
+
+.task-input::-webkit-input-placeholder {
+    font-family: var(--font-family);
+
+}
+
+.task-input:-ms-input-placeholder {
+    font-family: var(--font-family);
+}
+
+.task-input:-moz-placeholder {
+    font-family: var(--font-family);
+}
+
+.task-input::-moz-placeholder {
+    font-family: var(--font-family);
+}
+
+.add-task-btn{
+    font-size: 2rem;
+    padding: 1rem 1.4rem;
+    align-self: flex-end;
+}
+
+/* Task styles */
+.task-item {
+    display: flex;
+    gap: 1.5rem;
+    background-color: var(--primary);
+    padding: 1rem;
+    border-radius: 5rem;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+}
+.task-check {
+    font-size: 1.7rem;
+    color: var(--greish);
+}
+.task-text {
+font-size: 1.7rem;
+flex: 1;
+border-radius: 5rem;
+}
+.task-text:focus {
+    outline: none;
+}
+.checked {
+    text-decoration: line-through .3rem;
+}
+.task-menu {
+
+}
+.task-remove {
+    font-size: 1.7rem;
+    color: var(--greish);
+}
+
+/* Alert Message */
+
+.alert-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(30px);
+    top: 0;
+}
+.alert-background.hide {
+    visibility: hidden;
+}
+.alert-message {
+    background-color: var(--accent);
+    padding: 7rem;
+    border-radius: 3rem;
+    min-height: 40vh;
+    width: 30%;
+    box-shadow: 0 0 50px var(--secondary);
+}
+.alert-message-phrase {
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 2rem;
+}
+.alert-message-phrase span {
+    text-decoration: wavy underline;
+}
+.alert-message-text {
+    font-size: 3rem;
+    color: var(--secondary);
+}
+.alert-message-btn {
+    background-color: var(--accent);
+    border: solid var(--dark) 3px;
+    color: var(--dark);
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    margin-top: 3rem;
+}
+.alert-message-btn:hover {
+    background-color: var(--dark);
+    color: var(--accent);
+}
+
+
+/* -------------------- codigo antiguo ------------------------ */
+
 
 .todo-container {
     background-color: var(--secondary);
     min-height: 50vh;
-    width: 70%;
+    width: 80%;
     border-radius: 2rem;
     margin: 2rem auto;
 }
@@ -64,9 +384,8 @@ main {
 /* Create a new task */
 .task-container {
     border-radius: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 90%;
+    margin: auto;
     padding: 1.25rem;
 }
 
@@ -85,52 +404,15 @@ form label{
     color: var(--light);
 }
 
-form input, form button, .categories {
-    display: block;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: none;
-    background: var(--primary);
-    border-radius: 5em;
-    width: 100%;
-    margin-top: .5rem;
-}
-
 form input::placeholder, .categories::content {
     color: var(--light);
     font-family: 'DM Sans', sans-serif;
 }
 
-form button {
-    color: var(--dark);
-    background: var(--accent);
-    font-weight: 500;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-}
-
-form button i {
-    margin-right: .75rem;
-}
-
 
 /* TODO list */
-.list-container {
-    background-color: var(--dark);
-    border-radius: 2rem;
-    min-height: 25vh;
-    display: flex;
-    justify-content: center;
-}
 
-.empty {
-    color: var(--light);
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20%;
-}
+
 
 .todo-list {
     list-style: none;
@@ -169,10 +451,6 @@ form button i {
     cursor: pointer;
 }
 
-.fa-trash, .fa-check {
-    color: #9D84B7;
-    pointer-events: none;
-}
 
 .completed {
     text-decoration: line-through;
@@ -181,7 +459,7 @@ form button i {
 /*************** EVENTS CONTAINER ***********************/
 .events-container {
     background-color: var(--secondary);
-    width: 70%;
+    width: 80%;
     border-radius: 2rem;
     margin: 2rem auto;
     padding: 1.5rem;
@@ -189,11 +467,12 @@ form button i {
 
 .events-heading {
     display: flex;
-}
+    margin-bottom: 10%;}
 
 .events-heading h3 {
     font-size: 1.2em;
     margin-right: 1rem;
+    align-self: center;
 }
 
 .events-button {
@@ -203,11 +482,12 @@ form button i {
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
     display: block;
-    padding: .2rem .35rem;
     font-size: 1rem;
     border: none;
     border-radius: 10em;
     margin: auto;
+    width: 35px;
+    height: 35px;
 }
 
 .modal-container {
@@ -271,9 +551,9 @@ padding-bottom: 1.75rem;
 }
 
 .events-list {
-padding: 10%;
 list-style: none;
 }
+
 
 .events-preloader {
     color: var(--light);
@@ -292,47 +572,21 @@ list-style: none;
     margin-top: 1em;
 }
 
-
-/* For lanscape mobile */
-@media only screen and (orientation: landscape) {}
-
-/* For tablet */
-@media only screen and (min-width: 768px) {}
-
-/* For desktop */
-@media only screen and (min-width: 768px) {
-    h1 {
-        font-size: 3rem;
-        margin: 5rem 5rem .3rem 5rem;
-        margin-bottom: .5rem;
-        font-weight: 500;
-    }
-    
-    h2 {
-        font-size: 5rem;
-        margin: 0 5rem 0 5rem;
-    }
-    
-    /*************** TODO CONTAINER ***********************/
-    .todo-container {
-        min-height: 50vh;
-        width: 50%;
-    }
-    
-    /* Create a new task */
-    .task-container div {
-        width: 80%;
-    }
-
-    /* TODO list */
-    .todo-list {
-        width: 95%;
-    }
-    
-    .todo-item {
-        width: 90%;
-    }
+.event-list-container {
+    width: 80%;
 }
+
+.event-remove {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-remove-icon {
+    pointer-events: none;
+}
+
+
 
 /* Dark mode toggle */
 .light-mode {
