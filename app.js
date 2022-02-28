@@ -6,7 +6,6 @@ const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
 const empty = document.querySelector('.empty');
-const emptyList = document.querySelector('.empty-list');
 const alertMessage = document.querySelector('.alert-background');
 const closeAlertBtn = document.querySelector('.alert-message-btn');
 
@@ -24,6 +23,8 @@ $("#darkModeToggle").on('click', switchMode);
 
 //saveLocalLits -> saves lists in localStorage
 let lists = [];
+
+
 function saveLocalList(list) {
     lists.push(list);
     localStorage.setItem('lists', JSON.stringify(lists));
@@ -62,13 +63,13 @@ function createList () {
                     listTitleContainer.appendChild(listBar);
                         // Edit title
                         const editTitleBtn = document.createElement("button");
-                        editTitleBtn.innerHTML = '<i class="fas fa-edit"></i>';
+                        editTitleBtn.innerHTML = '<i class="fas fa-edit edit-title-icon"></i>';
                         editTitleBtn.classList.add('edit-title-btn', 'btn');
                         editTitleBtn.addEventListener('click', editList);
                         listBar.appendChild(editTitleBtn);
                         // Delete List Btn
                         const deleteListBtn = document.createElement("button");
-                        deleteListBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                        deleteListBtn.innerHTML = '<i class="fas fa-trash delete-list-icon"></i>';
                         deleteListBtn.classList.add('delete-list-btn', 'delete-btn', 'btn');
                         deleteListBtn.addEventListener('click', deleteList);
                         listBar.appendChild(deleteListBtn);
@@ -76,15 +77,11 @@ function createList () {
                 const tasksContainer = document.createElement("div");
                 tasksContainer.classList.add('tasks-container');
                 listContainer.appendChild(tasksContainer);
+                new Sortable(tasksContainer, {
+                    animation: 200
+                })
                     // Empty List Div
-                    const emptyList = document.createElement("div");
-                    emptyList.classList.add('empty-list');
-                    tasksContainer.appendChild(emptyList);
-                        // Empty text
-                        const emptyText = document.createElement("p");
-                        emptyText.innerText = 'Your list is empty'
-                        emptyText.classList.add('empty-text');
-                        emptyList.appendChild(emptyText);
+                    emptyList (tasksContainer);
                 // List Footer
                 const listFooter = document.createElement("div");
                 listFooter.classList.add('list-footer');
@@ -108,18 +105,7 @@ function createList () {
                     clearBtn.innerText = 'Clear all'
                     clearBtn.classList.add('clear-btn');
                     listFooter.appendChild(clearBtn);
-                    clearBtn.addEventListener('click', clearAll = (e) => {
-                        while (tasksContainer.firstChild) {
-                            tasksContainer.firstChild.remove();
-                        }
-                        //Reset Task count
-                        taskCountNumber.innerText = '0';
-                        taskCountText.innerText = 'tasks';
-                        //Reset Empty list
-                        if (!(tasksContainer.firstChild)) {
-                            tasksContainer.appendChild(emptyList);
-                        }
-                    })
+                    clearBtn.addEventListener('click', clearAll);
             // Task Creator
             const taskCreator = document.createElement("div");
             taskCreator.classList.add('task-creator');
@@ -138,65 +124,7 @@ function createList () {
                     addTaskBtn.innerHTML = '<i class="fas fa-plus"></i>';
                     addTaskBtn.classList.add('add-task-btn', 'btn');
                     taskCreatorForm.appendChild(addTaskBtn);
-                    addTaskBtn.addEventListener('click',addTask = (e) => {
-                        emptyList.remove();
-                        //Prevent form from submitting
-                        e.preventDefault();
-                        //Increase task count
-                        let prevTaskCount = e.target.parentElement.parentElement.previousElementSibling.lastChild.firstChild.firstChild;
-                        newTaskCount = parseInt(prevTaskCount.innerText) + 1;
-                        taskCountNumber.innerText = newTaskCount;
-                        if (newTaskCount === 1) {
-                            taskCountText.innerText = 'task';
-                        } else {
-                            taskCountText.innerText = 'tasks';
-                        }
-                        //Task list item
-                        const taskItem = document.createElement("li");
-                        taskItem.classList.add('task-item');
-                        tasksContainer.appendChild(taskItem);
-                            //Task check icon
-                            const taskCheck = document.createElement("i");
-                            taskCheck.classList.add('task-check', 'fa-regular', 'fa-circle');
-                            taskItem.appendChild(taskCheck);
-                            taskCheck.addEventListener('click', toggleCheck = (e) => {
-                                e.target.nextElementSibling.classList.toggle('checked');
-                            });
-                            //Task text
-                            const taskText = document.createElement("p");
-                            taskText.classList.add('task-text');
-                            taskText.innerText = taskInput.value;
-                            taskText.contentEditable = 'true';
-                            taskItem.appendChild(taskText);
-                            //Task menu
-                            const taskMenu = document.createElement("div");
-                            taskMenu.classList.add('task-menu');
-                            taskItem.appendChild(taskMenu);
-                                //Remove
-                                const taskRemove = document.createElement("i");
-                                taskRemove.classList.add('task-remove', 'fas', 'fa-trash');
-                                taskMenu.appendChild(taskRemove);
-                                taskRemove.addEventListener('click', removeTask = (e) => {
-                                    const task = e.target.parentElement.parentElement;
-                                    if (!(task.nextElementSibling || task.previousElementSibling)) {
-                                        tasksContainer.appendChild(emptyList);
-                                    }
-                                    //Decrease task count
-                                    let prevTaskCount = e.target.parentElement.parentElement.parentElement.nextElementSibling.firstChild.firstChild;
-                                    newTaskCount = parseInt(prevTaskCount.innerText) - 1;
-                                    console.log(newTaskCount);
-                                    taskCountNumber.innerText = newTaskCount;
-                                    if (newTaskCount === 1) {
-                                        taskCountText.innerText = 'task';
-                                    } else {
-                                        taskCountText.innerText = 'tasks';
-                                    }
-                                    //Delete Task
-                                    task.remove();
-                                });
-                        //Reset taskInput
-                        taskInput.value = "";
-                    });
+                    addTaskBtn.addEventListener('click', addTask); 
 
         // Save list in Local Storage
         saveLocalList({title: listTitle.innerText, list: []})
@@ -210,13 +138,12 @@ function closeAlert () {
 }
 
 function deleteList (e) {
-    if (lists != []) {
     const list = e.target.parentElement.parentElement.parentElement.parentElement;
-    console.log(list);
+    const listsContainer = list.parentElement;
     list.remove();
-    } else {
+    if (!(listsContainer.firstChild.nextElementSibling)) {
         listsContainer.appendChild(empty);
-    }
+    }    
 }
 
 function editList (e) {
@@ -232,61 +159,110 @@ function editList (e) {
     }
 }
 
-function addTask () {
-
-}
-
-function addTodo (event){
+function addTask (e) {
+    let tasksContainer = e.target.parentElement.parentElement.previousElementSibling.firstChild.nextElementSibling;
+    if (tasksContainer.firstChild.classList == 'empty-list') {
+        let emptyDiv = tasksContainer.firstChild;
+        emptyDiv.remove();
+    }
     //Prevent form from submitting
-    event.preventDefault();
-    //Todo DIV
-    const todoDiv = document.createElement("div");
-    todoDiv.classList.add('todo');
-    emptyList.remove();
-    //Create LI
-    const newTodo = document.createElement("li");
-    newTodo.innerText = todoInput.value;
-    newTodo.classList.add('todo-item');
-    todoDiv.appendChild(newTodo);
-    
-    //ADD TO LOCAL STORAGE
-    saveLocalTodos(todoInput.value);
-
-    //check mark button
-    const checkButton = document.createElement('button');
-    checkButton.innerHTML = '<i class="fas fa-check"></i>';
-    checkButton.classList.add("complete-btn");
-    todoDiv.appendChild(checkButton);
-    //trash button
-    const trashButton = document.createElement('button');
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
-    trashButton.classList.add("trash-btn");
-    todoDiv.appendChild(trashButton);
-    //append to list
-    todoList.appendChild(todoDiv);
-    //Clear Todo INPUT VALUE
-    todoInput.value = "";
+    e.preventDefault();
+    //Increase task count
+    let taskCountNumber = e.target.parentElement.parentElement.previousElementSibling.lastChild.firstChild.firstChild;
+    let taskCountText = e.target.parentElement.parentElement.previousElementSibling.lastChild.firstChild.lastChild;
+    let newTaskCount = parseInt(taskCountNumber.innerText) + 1;
+    taskCountNumber.innerText = newTaskCount;
+    if (newTaskCount === 1) {
+        taskCountText.innerText = 'task';
+    } else {
+        taskCountText.innerText = 'tasks';
+    }
+    //Task list item
+    const taskItem = document.createElement("li");
+    taskItem.classList.add('task-item');
+    tasksContainer.appendChild(taskItem);
+        //Task check icon
+        const taskCheck = document.createElement("i");
+        taskCheck.classList.add('task-check', 'fa-regular', 'fa-circle');
+        taskItem.appendChild(taskCheck);
+        taskCheck.addEventListener('click', toggleCheck);
+        //Task text
+        let taskInput = e.target.previousElementSibling;
+        const taskText = document.createElement("p");
+        taskText.classList.add('task-text');
+        taskText.innerText = taskInput.value;
+        taskText.contentEditable = 'true';
+        taskItem.appendChild(taskText);
+        //Task menu
+        const taskMenu = document.createElement("div");
+        taskMenu.classList.add('task-menu');
+        taskItem.appendChild(taskMenu);
+            //Remove
+            const taskRemove = document.createElement("i");
+            taskRemove.classList.add('task-remove', 'fas', 'fa-trash');
+            taskMenu.appendChild(taskRemove);
+            taskRemove.addEventListener('click', removeTask);
+    //Reset taskInput
+    taskInput.value = "";
 }
 
-function checkDelete (e) {
-    const item = e.target;
-    //CHECK TODO
-    if(item.classList[0] === 'complete-btn') {
-        const todo = item.parentElement;
-        todo.classList.toggle("completed");
+function toggleCheck (e) {
+    e.target.nextElementSibling.classList.toggle('checked');
+}
+
+function removeTask (e) {
+    const task = e.target.parentElement.parentElement;
+    const tasksContainer = e.target.parentElement.parentElement.parentElement;
+    if (!(task.nextElementSibling || task.previousElementSibling)) {
+        emptyList(tasksContainer);
     }
-    //DELETE TODO
-    if(item.classList[0] === 'trash-btn') {
-        const todo = item.parentElement;
-        deleteLocalTodos (todo);
-        todo.remove();
+    //Decrease task count
+    let taskCountNumber = e.target.parentElement.parentElement.parentElement.nextElementSibling.firstChild.firstChild;
+    let taskCountText= e.target.parentElement.parentElement.parentElement.nextElementSibling.firstChild.lastChild;
+    newTaskCount = parseInt(taskCountNumber.innerText) - 1;
+    taskCountNumber.innerText = newTaskCount;
+    if (newTaskCount === 1) {
+        taskCountText.innerText = 'task';
+    } else {
+        taskCountText.innerText = 'tasks';
+    }
+    //Delete Task
+    task.remove();
+}
+
+function clearAll (e) {
+    let tasksContainer = e.target.parentElement.previousElementSibling;
+    while (tasksContainer.firstChild) {
+        tasksContainer.firstChild.remove();
+    }
+    //Reset Task count
+    let taskCountNumber = e.target.previousElementSibling.firstChild;
+    let taskCountText = taskCountNumber.nextElementSibling;
+    taskCountNumber.innerText = '0';
+    taskCountText.innerText = 'tasks';
+    //Reset Empty list
+    if (!(tasksContainer.firstChild)) {
+        emptyList (tasksContainer);
     }
 }
 
+// Empty List Div
+function emptyList (tasksContainer) {
+    const emptyList = document.createElement("div");
+    emptyList.classList.add('empty-list');
+    tasksContainer.appendChild(emptyList);
+        // Empty text
+        const emptyText = document.createElement("p");
+        emptyText.innerText = 'Your list is empty'
+        emptyText.classList.add('empty-list-text');
+        emptyList.appendChild(emptyText);
+}
 
 function switchMode () {
 $("body").toggleClass("light-mode");
 }
+
+
 
 //The code below is under constuction, is not yet used.
 

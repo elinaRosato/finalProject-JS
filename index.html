@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,700&family=Lato:wght@300;400;700;900&family=Merriweather+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>To Do List</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,700&family=Lato:wght@300;400;700;900&family=Merriweather+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>To Do List</title>
+    </head>
+    <body>
         <header>
-            <div class="heading-container">
-                <h1>What's up, Lina?</h1>
-                <h2>Let's get things done.</h2>
-            </div>
-            <div class="bar">
+            <nav>
+                <div class="heading-container">
+                    <h1>What's up, Lina?</h1>
+                    <h2>Let's get things done.</h2>
+                </div>
                 <div class="dark-mode-container">
                     <i id="darkModeToggle" class="fas fa-adjust"></i>
                 </div>
+            </nav>
+            
+            <div class="create-list">
                 <button class="create-list-btn btn" type="submit">
                     <i class="fas fa-plus"></i>Create list
                 </button>
             </div>
         </header>
+        
+        
         <main class="lists-container">
             <div class="empty">
-                <p>Your don't have any lists!</p>
-                <img src="man-resting.svg" alt="Man Resting" class="empty-img">
+                <p class="empty-heading">Ooops! It's Empty.</p>
+                <p class="empty-text">Looks like you don't have any lists yet</p>
+                <p class="empty-text"><span>Create one</span> or go have a walk instead!</p>
+                <img src="emptyIllustration.svg" alt="Man Resting" class="empty-img">
             </div>
-            <div class="alert-background hide">
-                <div class="alert-message">
-                    <p class="alert-message-phrase">
-                        Jack of all trades, master of none!
-                    </p>
-                    <p class="alert-message-text">
-                        You have reached the maximum number of lists.
-                    </p>
-                    <button class="alert-message-btn btn">OK</button>
-                </div>
-            </div>
-                
         </main>
-    
+        <div class="alert-background hide">
+            <div class="alert-message">
+                <p class="alert-message-phrase">
+                    Jack of all trades, <br> master of <span>none</span>!
+                </p>
+                <p class="alert-message-text">
+                    You have reached the maximum number of lists. This could be a good time to have a coffee
+                </p>
+                <button class="alert-message-btn btn">OK</button>
+            </div>
+        </div>
+        <footer>
+            <p class="footer-text">Designed and developed by <span>Elina Rosato</span></p>
+        </footer>
         
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="app.js"></script>
-</body>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="Sortable.js"></script>
+        <script src="app.js"></script>
+    </body>
 </html>
 
 

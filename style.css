@@ -16,6 +16,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 16px;
 }
 
 body {
@@ -39,10 +40,12 @@ body {
 }
 
 header {
+    padding: 0 2rem;
+}
+
+nav {
     display: flex;
     justify-content: space-between;
-    padding: 0 2rem;
-    margin-bottom: 5rem;
 }
 
 .heading-container{
@@ -50,7 +53,7 @@ header {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     margin: .3rem 4rem;
     margin-bottom: 1rem;
     font-weight: 700;
@@ -58,56 +61,85 @@ h1 {
 }
 
 h2 {
-    font-size: 6rem;
+    font-size: 5rem;
     margin: 0 4rem 0 4rem;
     font-weight: 700;
     text-shadow: 1rem 1rem 2rem var(--secondary);
 
 }
 
-.bar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 1.5rem 2rem;
-
-}
-
 .dark-mode-container {
     display: flex;
     justify-content: end;
-    font-size: 2rem;
+    font-size: 5rem;
 }
 
+#darkModeToggle {
+    font-size: 1.7rem;
+}
+.create-list {
+    display: flex;
+    justify-content: flex-end;
+}
 .create-list-btn {
     font-weight: 500;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     padding: 1.2rem 2.7rem;
     box-shadow: 0 0 50px var(--secondary);
+    
 }
 .create-list-btn i {
     margin-right: 1rem;
+    font-size: 1.7rem;
 }
 
 main {
     display: flex;
     justify-content: space-evenly;
     align-items: flex-start;
-    min-height: 60vh;
+    min-height: 50vh;
+    margin-top: 2rem;
 }
 
 /* LISTS CONTAINER ----------------------------------*/ 
 
 .empty {
-    background: radial-gradient( circle, var(--secondary) 0%, var(--primary) 50%);
+    margin-top: 2rem;
+    width: 40%;
+    align-self: center;
 }
 
-.empty p {
-    color: var(--light);
+.empty-heading {
+    color: var(--greish);
     font-weight: 700;
-    font-size: 2rem;
-    margin-top: 15vh;
+    font-size: 3rem;
     text-align: center;
+    margin-bottom: .5rem;
+}
+
+.empty-text {
+    color: var(--greish);
+    font-weight: 700;
+    font-size: 1.7rem;
+    text-align: center;
+    margin-top: 1rem;
+    letter-spacing: 0.03rem;
+}
+
+.empty-text span {
+    color: var(--accent);
+    font-size: 1.7rem;
+
+}
+
+.empty-arrow {
+    position: absolute;
+    height: 35%;
+    right: 18rem;
+    top: 24rem;
+    -webkit-transform:rotate(15deg);
+    -moz-transform:rotate(15deg);
+    -o-transform:rotate(15deg); 
 }
 
 .empty-img {
@@ -127,11 +159,13 @@ main {
     background-color: var(--secondary);
     padding: 3rem 3rem 1rem 3rem;
     border-radius: 2rem;
+    min-height: 19rem;
 }
 
 .list-title-container{
     display: flex;
     font-weight: 300;
+    margin-bottom: 2rem;
 }
 
 .list-icon{
@@ -141,11 +175,14 @@ main {
 }
 
 .list-title{
-    font-size: 2.5rem;
-    margin: 0 2rem;
+    font-size: 2rem;
     padding: 0 1rem;
     flex: 1;
     border-radius: 5rem;
+    margin: auto;
+    margin-right: 2rem;
+    margin-left: 2rem;
+
 }
 
 .editing {
@@ -164,7 +201,7 @@ main {
 .delete-list-btn, .edit-title-btn{
     font-size: 1.5rem;
     margin-left: .5rem;
-    padding: 0.6rem 0.8rem;
+    padding: 0.6rem 0.9rem;
 }
 
 .edit-title-btn {
@@ -174,11 +211,13 @@ main {
 .edit-title-btn i {
     color: var(--accent);
     pointer-events: none;
+    font-size: 1.5rem;
 }
 
-.delete-list-btn i,  .add-task-btn i{
+.delete-list-btn i {
     color: var(--dark);
     pointer-events: none;
+    font-size: 1.5rem;
 }
 
 .tasks-container {
@@ -186,6 +225,19 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 2rem;
+    max-height: 30rem;
+    overflow-y: auto;
+}
+
+.tasks-container::-webkit-scrollbar {
+    padding-top: 2rem;
+    background-color: transparent;
+    width: .5rem;
+}
+
+.tasks-container::-webkit-scrollbar-thumb {
+    background-color: var(--dark);
 }
 
 .empty-list {
@@ -195,8 +247,9 @@ main {
     justify-content: center;
 }
 
-.empty-text {
-    padding: 2rem;
+.empty-list-text {
+    color: var(--greish);
+    padding: 1rem;
     font-size: 1.7rem;
     font-weight: 500;
     letter-spacing: .05rem;
@@ -219,6 +272,10 @@ main {
     letter-spacing: .05rem;
 }
 
+.task-count p {
+    font-size: 1.7rem;
+}
+
 .clear-btn{
     color: var(--greish);
     font-size: 1.7rem;
@@ -226,6 +283,7 @@ main {
     border: none;
     letter-spacing: .05rem;
 }
+
 .clear-btn:hover{
     color: var(--accent);
 }
@@ -287,6 +345,12 @@ main {
     align-self: flex-end;
 }
 
+.add-task-btn i{
+    color: var(--dark);
+    pointer-events: none;
+    font-size: 2rem;
+}
+
 /* Task styles */
 .task-item {
     display: flex;
@@ -294,13 +358,15 @@ main {
     background-color: var(--primary);
     padding: 1rem;
     border-radius: 5rem;
-    margin-top: 2rem;
     padding: 1rem 2rem;
+    width: 97%;
+    align-items: center;
 }
 .task-check {
     font-size: 1.7rem;
     color: var(--greish);
 }
+
 .task-text {
 font-size: 1.7rem;
 flex: 1;
@@ -310,15 +376,17 @@ border-radius: 5rem;
     outline: none;
 }
 .checked {
+    color: var(--greish);
     text-decoration: line-through .3rem;
+text-decoration-color: var(--light);
 }
-.task-menu {
 
-}
 .task-remove {
     font-size: 1.7rem;
     color: var(--greish);
 }
+
+
 
 /* Alert Message */
 
@@ -337,10 +405,10 @@ border-radius: 5rem;
 }
 .alert-message {
     background-color: var(--accent);
-    padding: 7rem;
+    padding: 6rem;
     border-radius: 3rem;
     min-height: 40vh;
-    width: 30%;
+    width: 40%;
     box-shadow: 0 0 50px var(--secondary);
 }
 .alert-message-phrase {
@@ -351,6 +419,8 @@ border-radius: 5rem;
 }
 .alert-message-phrase span {
     text-decoration: wavy underline;
+    font-size: 5rem;
+
 }
 .alert-message-text {
     font-size: 3rem;
@@ -369,224 +439,25 @@ border-radius: 5rem;
     color: var(--accent);
 }
 
+/* Footer */
 
-/* -------------------- codigo antiguo ------------------------ */
-
-
-.todo-container {
-    background-color: var(--secondary);
-    min-height: 50vh;
-    width: 80%;
-    border-radius: 2rem;
-    margin: 2rem auto;
+footer {
+display: flex;
+justify-content: end;
+align-items: center;
+gap: 3rem;
+color: var(--greish);
+margin-top: 2rem;
 }
 
-/* Create a new task */
-.task-container {
-    border-radius: 2rem;
-    width: 90%;
-    margin: auto;
-    padding: 1.25rem;
+.footer-text {
+    font-size: 1.7rem;
 }
 
-h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
+.footer-text span {
+    color: var(--accent);
+    font-size: 1.7rem;
 }
-
-form {
-    width: 100%;
-}
-
-form label{
-    display: block;
-    font-size: 1rem;
-    color: var(--light);
-}
-
-form input::placeholder, .categories::content {
-    color: var(--light);
-    font-family: 'DM Sans', sans-serif;
-}
-
-
-/* TODO list */
-
-
-
-.todo-list {
-    list-style: none;
-    width: 100%;
-    min-height: 80%;
-}
-
-.todo {
-    background: var(--secondary);
-    margin: 0.75em;
-    border-radius: 2rem;
-    color: var(--light);
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .5rem 1rem;
-}
-
-.todo-item {
-    width: 75%;
-    font-size: 1.25rem;
-}
-
-.todo-category {
-    color: var(--dark);
-    background-color: var(--accent);
-    font-size: 1.25rem;
-    border-radius: 2rem;
-}
-
-.trash-btn, .complete-btn {
-    border: none;
-    background-color: transparent;
-    margin-left: 1em;
-    cursor: pointer;
-}
-
-
-.completed {
-    text-decoration: line-through;
-}
-
-/*************** EVENTS CONTAINER ***********************/
-.events-container {
-    background-color: var(--secondary);
-    width: 80%;
-    border-radius: 2rem;
-    margin: 2rem auto;
-    padding: 1.5rem;
-}
-
-.events-heading {
-    display: flex;
-    margin-bottom: 10%;}
-
-.events-heading h3 {
-    font-size: 1.2em;
-    margin-right: 1rem;
-    align-self: center;
-}
-
-.events-button {
-    color: var(--dark);
-    background: var(--accent);
-    font-weight: 500;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    display: block;
-    font-size: 1rem;
-    border: none;
-    border-radius: 10em;
-    margin: auto;
-    width: 35px;
-    height: 35px;
-}
-
-.modal-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #211d3785;
-    width: 100vw;
-    height: 100vh;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .3s ease;
-}
-
-.modal-container.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.close-event-button {
-text-align: right;
-padding-bottom: 1.75rem;
-}
-
-.modal {
-    background-color: var(--accent);
-    width: 90vw;
-    height: 65vh;
-    border-radius: 2rem;
-    margin: 2rem auto;
-    padding: 1.75rem;
-    color: var(--dark);
-}
-
-.modal h3 {
-    padding-bottom: 1.5rem;
-    font-size: 1.9rem;
-}
-.create-event-button {
-    color: var(--light);
-    background: var(--dark);
-    margin: 2rem auto;
-    width: 50%;
-}
-
-.modal form label{
-    display: block;
-    font-size: 1rem;
-    color: var(--light);
-}
-
-.modal form input, .modal select {
-    display: block;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: none;
-    background: var(--light);
-    border-radius: 5em;
-    margin: 1rem auto;
-    width: 90%;
-}
-
-.events-list {
-list-style: none;
-}
-
-
-.events-preloader {
-    color: var(--light);
-    font-weight: 400;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.event {
-    background: var(--dark);
-    border-radius: 2rem;
-    color: var(--light);
-    padding:  1em;
-    margin-top: 1em;
-}
-
-.event-list-container {
-    width: 80%;
-}
-
-.event-remove {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.event-remove-icon {
-    pointer-events: none;
-}
-
-
 
 /* Dark mode toggle */
 .light-mode {
@@ -597,3 +468,59 @@ list-style: none;
     --accent: #C77AFF;
 }
 
+/* Tablet */
+
+@media only screen and (max-width: 1970px) {
+    *{
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 1730px) {
+    h2 {
+        margin-bottom: 2rem;
+
+    }
+
+    .empty {
+        margin-top: 2rem;
+        width: 70%;
+    }
+    
+    main {
+        flex-wrap: wrap;    
+        gap: 2rem;
+    }
+
+        
+    .list-panel {
+        width: 75vw;
+    }
+    
+}
+
+@media only screen and (max-width: 1300px) {
+        
+    .list-panel {
+        width: 75vw;
+    }
+    
+}
+
+/* Mobile */
+@media only screen and (max-width: 600px) {
+    *{
+        font-size: 8px;
+    }
+
+    h2 {
+        margin-bottom: 2rem;
+
+    }
+
+    .empty {
+        margin-top: 2rem;
+        width: 90%;
+    }
+
+}
